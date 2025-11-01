@@ -108,7 +108,7 @@ echo $PATH
 Après avoir cloner le projet via git
 
 ```bash
-git clone http://gitlab.slagsoa-consulting.net/ifce/boilerplate_mobile
+git clone https://github.com/aboujaafar1997/react-native-boilerplate-ab.git
 ```
 
 Avant de lancer le projet il faut d'abord installer les dépendences du projet via une commande
