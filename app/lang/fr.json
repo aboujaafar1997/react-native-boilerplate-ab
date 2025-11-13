@@ -1,7 +1,16 @@
 {
   "translation": {
     "loginScreen": {
-      "hello": "salut"
+      "title": "Demo VBC",
+      "username": "Username",
+      "password": "Password",
+      "loginButton": "Login",
+      "errorTitle": "Error",
+      "errorMessage": "Please enter both username and password",
+      "successTitle": "Login Success",
+      "welcome": "Welcome",
+      "selectLanguage": "Select Language",
+      "hello": "Hello"
     }
   }
 }

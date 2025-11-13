@@ -1,7 +1,16 @@
 {
   "translation": {
     "loginScreen": {
-      "hello": "مرحبًا"
+      "title": "ديمو VBC",
+      "username": "اسم المستخدم",
+      "password": "كلمة المرور",
+      "loginButton": "تسجيل الدخول",
+      "errorTitle": "خطأ",
+      "errorMessage": "الرجاء إدخال اسم المستخدم وكلمة المرور",
+      "successTitle": "تم تسجيل الدخول بنجاح",
+      "welcome": "مرحباً",
+      "selectLanguage": "اختر اللغة",
+      "hello": "سلام"
     }
   }
 }

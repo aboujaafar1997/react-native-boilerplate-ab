@@ -1,22 +1,46 @@
 /* eslint-disable react/forbid-prop-types */
 import PropTypes from 'prop-types';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Typography } from '../../styles';
+import React, { useState } from 'react';
+import { useEffect } from 'react';
+import {
+  View,
+  Text,
+  SafeAreaView,
+  StatusBar,
+  StyleSheet,
+  TextInput,
+  Platform,
+  FlatList,
+  ScrollView,
+  Image,
+  Button,
+  TouchableOpacity,
+  Modal,
+} from 'react-native';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../store/authentification/actions';
 
-const Home = () => (
-  <View style={styles.wrapper}>
-    <Text style={styles.text}>Home</Text>
-  </View>
-);
+const Home = ({ route, navigation }) => {
+  const data = route.params;
+  const dispatch = useDispatch();
+  return (
+    <SafeAreaView>
+      <StatusBar backgroundColor={'green'} />
+      <Text>Home</Text>
+      <TouchableOpacity onPress={() => dispatch(logout())}>
+        <Text>Logout</Text>
+      </TouchableOpacity>
+    </SafeAreaView>
+  );
+};
 
 const styles = StyleSheet.create({
-  wrapper: {
-    flex: 1,
-    height: '100%',
+  view1: {
+    paddingHorizontal: 20,
+    paddingVertical: 20,
   },
-  text: {
-    fontSize: Typography.FONT_SIZE_24,
+  view2: {
+    //backgroundColor: 'blue',
   },
 });
 

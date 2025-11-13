@@ -7,7 +7,7 @@ import { authentificationSuccess, logout } from '../store/authentification/actio
 import { toggleToaster } from '../store/toaster/actions';
 
 export const http = axios.create({
-  baseURL: API_URL,
+  baseURL: 'https://dummyjson.com',
   headers: store.getState().auth.token
     ? {
         Accept: 'application/json',

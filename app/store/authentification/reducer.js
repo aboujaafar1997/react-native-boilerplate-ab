@@ -20,11 +20,11 @@ export const authentificationReducer = produce((draftState, action) => {
   switch (action.type) {
     case AUTHENTIFICATION:
       draftState.loading = true;
+      draftState.user = action.payload;
       break;
     case AUTHENTIFICATION_SUCCESS:
-      draftState.token = action.payload.access_token;
-      draftState.refreshToken = action.payload.refresh_token;
-      draftState.idToken = action.payload.id_token;
+      draftState.loading = false;
+      draftState.token = action.payload.accessToken;
       break;
     case AUTHENTIFICATION_ERROR:
       draftState.loading = false;
@@ -34,10 +34,9 @@ export const authentificationReducer = produce((draftState, action) => {
       draftState.online = action.payload;
       break;
     case LOGOUT:
+      console.log('ooo')
       draftState.token = null;
-      draftState.refreshToken = null;
       draftState.user = null;
-      draftState.idToken = null;
       break;
     default:
       break;

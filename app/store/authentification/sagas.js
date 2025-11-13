@@ -9,16 +9,18 @@ import { authentificationError, authentificationSuccess } from './actions';
 import { AUTHENTIFICATION, LOGOUT } from './types';
 
 const authentificationRequest = async ({ username, password }) => {
-  const result = await http.post('/login', {
-    grant_type: 'password',
-    username: username.replace(/\s/g, ''),
-    password: password.replace(/\s/g, ''),
-    scope: 'profile email',
+  console?.log( {
+    username,
+    password,
+  })
+  const result = await http.post('/auth/login', {
+    username,
+    password,
   });
   return { status: result?.status, data: result?.data };
 };
 
-// Logout  IFCE
+// Logout  
 const logoutRequest = async (idToken) => {
   const result = await http.get(
     `$/logout?id_token_hint=${idToken}&state=${Math.random().toString(36).substring(2, 12)}`
@@ -26,7 +28,7 @@ const logoutRequest = async (idToken) => {
   return { status: result?.status, data: result?.data };
 };
 
-// inject access_token to header pour les APIs IFCE
+// inject access_token to header pour les APIs 
 const addTokenTohttp = async (token) => {
   if (token) http.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
@@ -35,6 +37,7 @@ const addTokenTohttp = async (token) => {
 export function* authentification({ payload }) {
   try {
     const response = yield call(authentificationRequest, payload);
+    console.log(response)
     if (response?.status !== 200 || response?.status !== 201) {
       yield put(authentificationSuccess(response.data));
       yield call(addTokenTohttp, response.data.access_token);
@@ -76,10 +79,10 @@ export function* watchGetauthentification() {
   yield takeEvery(AUTHENTIFICATION, authentification);
 }
 
-export function* watchGetlogout() {
-  yield takeEvery(LOGOUT, logout);
-}
+// export function* watchGetlogout() {
+//   yield takeEvery(LOGOUT, logout);
+// }
 
 export default function* authentificationSaga() {
-  yield all([watchGetauthentification(), watchGetlogout()]);
+  yield all([watchGetauthentification()]);
 }
